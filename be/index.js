@@ -110,8 +110,6 @@ app.delete("/completed", async (req, res) => {
 
 mongoose
   .connect(mongoDBURL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
     maxPoolSize: 10,
   })
   .then(() => {
