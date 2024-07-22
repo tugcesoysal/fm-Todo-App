@@ -11,9 +11,12 @@ function Input({ todos, setTodos }) {
       }
 
       try {
-        const response = await axios.post("http://localhost:5555/", {
-          todo: newTodo,
-        });
+        const response = await axios.post(
+          "https://fm-todo-app-backend.onrender.com",
+          {
+            todo: newTodo,
+          },
+        );
         setTodos([
           ...todos,
           {

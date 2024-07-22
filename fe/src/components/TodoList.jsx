@@ -10,7 +10,7 @@ function TodoList({ todos, filter, setTodos, fetchTodos }) {
       updatedTodos[index].completed = !updatedTodos[index].completed;
 
       try {
-        await axios.put(`http://localhost:5555/${id}`, {
+        await axios.put(`https://fm-todo-app-backend.onrender.com/${id}`, {
           completed: updatedTodos[index].completed,
         });
         setTodos(updatedTodos);
@@ -35,9 +35,12 @@ function TodoList({ todos, filter, setTodos, fetchTodos }) {
 
     try {
       for (const todo of updatedTodos) {
-        await axios.patch(`http://localhost:5555/${todo._id}`, {
-          order: todo.order,
-        });
+        await axios.patch(
+          `https://fm-todo-app-backend.onrender.com/${todo._id}`,
+          {
+            order: todo.order,
+          },
+        );
       }
       fetchTodos();
     } catch (error) {

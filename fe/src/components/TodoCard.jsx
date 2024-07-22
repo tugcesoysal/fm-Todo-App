@@ -14,7 +14,9 @@ function TodoCard() {
 
   const fetchTodos = async () => {
     try {
-      const response = await axios.get("http://localhost:5555/");
+      const response = await axios.get(
+        "https://fm-todo-app-backend.onrender.com",
+      );
       setTodos(response.data);
     } catch (error) {
       console.error("Error fetching todos:", error);
@@ -25,7 +27,9 @@ function TodoCard() {
 
   const clearCompleted = async () => {
     try {
-      const response = await axios.delete("http://localhost:5555/completed");
+      const response = await axios.delete(
+        "https://fm-todo-app-backend.onrender.com/completed",
+      );
       console.log("Completed todos cleared:", response.data);
       fetchTodos();
     } catch (error) {
