@@ -22,11 +22,14 @@ const todoSchema = mongoose.Schema({
   },
 });
 
+todoSchema.index({ order: 1 });
+todoSchema.index({ completed: 1 });
+
 const Todo = mongoose.model("Todo", todoSchema);
 
 app.get("/", async (req, res) => {
   try {
-    const todos = await Todo.find({}).sort({ order: 1 });
+    const todos = await Todo.find({}).sort({ order: 1 }).lean();
     res.json(todos);
   } catch (err) {
     console.error("Error fetching todos:", err);
@@ -81,7 +84,7 @@ app.patch("/:id", async (req, res) => {
     const updatedTodo = await Todo.findByIdAndUpdate(
       id,
       { order },
-      { new: true }, // Return the updated document
+      { new: true },
     );
 
     if (!updatedTodo) {
@@ -105,8 +108,16 @@ app.delete("/completed", async (req, res) => {
   }
 });
 
+const options = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  poolSize: 10,
+  serverSelectionTimeoutMS: 5000,
+  socketTimeoutMS: 45000,
+};
+
 mongoose
-  .connect(mongoDBURL)
+  .connect(mongoDBURL, options)
   .then(() => {
     console.log("App connected to database");
     app.listen(PORT, () => {
