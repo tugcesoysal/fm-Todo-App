@@ -108,16 +108,12 @@ app.delete("/completed", async (req, res) => {
   }
 });
 
-const options = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  poolSize: 10,
-  serverSelectionTimeoutMS: 5000,
-  socketTimeoutMS: 45000,
-};
-
 mongoose
-  .connect(mongoDBURL, options)
+  .connect(mongoDBURL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    maxPoolSize: 10,
+  })
   .then(() => {
     console.log("App connected to database");
     app.listen(PORT, () => {
