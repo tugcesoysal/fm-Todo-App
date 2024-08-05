@@ -61,7 +61,7 @@ function TodoCard() {
           </button>
         </div>
       </div>
-      <div className="flex justify-center sm:hidden mt-4 bg-white rounded-[5px] py-4  drop-shadow-xl">
+      <div className="flex justify-center sm:hidden mt-4 bg-white rounded-[5px] py-4  drop-shadow-xl dark:bg-darkTheme-veryDarkDesaturatedBlue">
         <Buttons filter={filter} setFilter={setFilter} />
       </div>
       <button className="block mt-10 sm:mt-12 mx-auto text-[14px] text-lightTheme-darkGrayishBlue dark:text-darkTheme-darkGrayishBlue">
