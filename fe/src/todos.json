@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "todo": "Learn Node.js",
+    "completed": false,
+    "order": 1
+  },
+  {
+    "id": "2",
+    "todo": "Build a todo app",
+    "completed": false,
+    "order": 2
+  },
+  {
+    "id": "3",
+    "todo": "Write tests",
+    "completed": true,
+    "order": 3
+  }
+]
